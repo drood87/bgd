@@ -45,13 +45,7 @@
     "react/no-string-refs": [0],
     "react/no-multi-comp": [0],
     "no-use-before-define": [0],
-    "max-len": [
-      "error",
-      {
-        "limit": 60,
-        "ignore-pattern": "^import |^export {(.*?)}"
-      }
-    ],
+    "max-len": ["error", 80],
     "import/extensions": [1, "never"],
     "jsx-a11y/no-static-element-interactions": [0],
     "no-return-assign": [0],

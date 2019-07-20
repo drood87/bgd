@@ -1,0 +1,29 @@
+.games {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  justify-items: center;
+  grid-row-gap: 50px;
+  padding-top: 50px;
+
+  .game-image-container {
+    max-width: auto;
+
+    .game-image {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 0 35px #000;
+    }
+  }
+
+  .content {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+}

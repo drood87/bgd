@@ -11,6 +11,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
+    "nodemon": "nodemon",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
