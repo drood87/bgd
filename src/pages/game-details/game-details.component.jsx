@@ -3,14 +3,36 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class GameDetails extends Component {
-  componentDidMount() {
+  state = {
+    gameDetails: {},
+  };
+
+  async componentDidMount() {
     const { id } = this.props.location.state;
-    console.log(id);
+    const res = await fetch('https://shrouded-shelf-16885.herokuapp.com/gameDetails', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+
+    const data = await res.json();
+    this.setState({
+      gameDetails: data[0],
+    });
+    console.log(this.state.gameDetails);
   }
 
   render() {
     const { id, name } = this.props.location.state;
-    return <h1>Hey from {name}</h1>;
+    const { summary } = this.state.gameDetails;
+    return (
+      <div>
+        <h1>Hey from {name}</h1>
+        <p>{summary}</p>
+      </div>
+    );
   }
 }
 
