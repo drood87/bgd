@@ -6,7 +6,7 @@ import './games-list.styles.scss';
 export default class GamesList extends Component {
   render() {
     const { games } = this.props;
-
+    console.log(games);
     // (game.cover || {}).image_id in case cover is not there so undefined just cerate an empty object instead of throwing an error
 
     return (
@@ -17,7 +17,12 @@ export default class GamesList extends Component {
               <Link
                 to={{
                   pathname: `/details/${game.slug}`,
-                  state: { id: game.id, name: game.name },
+                  state: {
+                    id: game.id,
+                    name: game.name,
+                    screenshot: game.screenshots,
+                    cover: game.cover,
+                  },
                 }}
               >
                 <div className="game-image-container">

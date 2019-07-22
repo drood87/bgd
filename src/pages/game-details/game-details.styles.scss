@@ -1,0 +1,24 @@
+.game-details {
+  max-width: 90%;
+  margin: 0 auto;
+  position: relative;
+
+  &__cover {
+    position: relative;
+    bottom: 100px;
+    padding: 5px 10% 0 0;
+
+    > img {
+      box-shadow: 0 0 35px #000;
+    }
+  }
+
+  &__date {
+    padding-bottom: 15px;
+  }
+  &__section {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
