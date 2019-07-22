@@ -6,7 +6,9 @@ import './games-list.styles.scss';
 export default class GamesList extends Component {
   render() {
     const { games } = this.props;
+
     // (game.cover || {}).image_id in case cover is not there so undefined just cerate an empty object instead of throwing an error
+
     return (
       <>
         <div className="games">

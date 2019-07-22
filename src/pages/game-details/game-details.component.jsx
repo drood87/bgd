@@ -9,27 +9,29 @@ class GameDetails extends Component {
 
   async componentDidMount() {
     const { id } = this.props.location.state;
-    const res = await fetch('https://shrouded-shelf-16885.herokuapp.com/gameDetails', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id,
-      }),
-    });
-
+    const res = await fetch(
+      'https://shrouded-shelf-16885.herokuapp.com/gameDetails',
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+        }),
+      },
+    );
     const data = await res.json();
+
     this.setState({
       gameDetails: data[0],
     });
-    console.log(this.state.gameDetails);
   }
 
   render() {
-    const { id, name } = this.props.location.state;
+    const { name } = this.props.location.state;
     const { summary } = this.state.gameDetails;
     return (
       <div>
-        <h1>Hey from {name}</h1>
+        <h1>{name}</h1>
         <p>{summary}</p>
       </div>
     );
