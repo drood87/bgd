@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './games-list.styles.scss';
+import Overdrive from 'react-overdrive';
 
 export default class GamesList extends Component {
   render() {
@@ -26,13 +27,15 @@ export default class GamesList extends Component {
                 }}
               >
                 <div className="game-image-container">
-                  <img
-                    className="game-image"
-                    src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
-                      (game.cover || {}).image_id
-                    }.jpg`}
-                    alt={game.slug}
-                  />
+                  <Overdrive id={game.id}>
+                    <img
+                      className="game-image"
+                      src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
+                        (game.cover || {}).image_id
+                      }.jpg`}
+                      alt={game.slug}
+                    />
+                  </Overdrive>
                 </div>
               </Link>
             </div>
