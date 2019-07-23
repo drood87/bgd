@@ -5,14 +5,18 @@
   background-color: #fff;
   margin-bottom: 5%;
 
+  &__backdrop {
+    min-height: 200px;
+  }
+
+  &__image {
+    box-shadow: 0 0 35px #000;
+  }
+
   &__cover {
     position: relative;
     bottom: 100px;
     padding: 5px 10% 0 0;
-
-    > img {
-      box-shadow: 0 0 35px #000;
-    }
   }
 
   &__date {

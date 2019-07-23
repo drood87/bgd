@@ -9,7 +9,25 @@
   .game-image-container {
     max-width: auto;
 
-    .game-image {
+    .placeholder-container {
+      position: relative;
+
+      p {
+        position: absolute;
+        font-size: 10px;
+      }
+    }
+
+    .placeholder {
+      display: block;
+      margin: 0 auto;
+      overflow: hidden;
+      max-width: 210px;
+      max-height: 250px;
+    }
+
+    .game-image,
+    .placeholder {
       max-width: 100%;
       height: auto;
       box-shadow: 0 0 35px #000;

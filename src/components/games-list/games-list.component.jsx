@@ -7,8 +7,11 @@ import Overdrive from 'react-overdrive';
 export default class GamesList extends Component {
   render() {
     const { games } = this.props;
+
     console.log(games);
-    // (game.cover || {}).image_id in case cover is not there so undefined just cerate an empty object instead of throwing an error
+    // (game.cover || {}).image_id in case cover is not
+    // there so undefined just cerate an empty object
+    // instead of throwing an error
 
     return (
       <>
@@ -28,13 +31,27 @@ export default class GamesList extends Component {
               >
                 <div className="game-image-container">
                   <Overdrive id={game.id}>
-                    <img
-                      className="game-image"
-                      src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
-                        (game.cover || {}).image_id
-                      }.jpg`}
-                      alt={game.slug}
-                    />
+                    {game.cover === undefined ? (
+                      <div className="placeholder-container">
+                        <img
+                          src={`https://via.placeholder.com/200?text=${
+                            game.name
+                          }`}
+                          alt="placeholder"
+                          className="placeholder"
+                        />
+                        <p>{game.name}</p>
+                      </div>
+                    ) : (
+                      <img
+                        className="game-image"
+                        src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
+                          (game.cover || {}).image_id
+                        }.jpg
+                      `}
+                        alt={game.slug}
+                      />
+                    )}
                   </Overdrive>
                 </div>
               </Link>
@@ -47,5 +64,5 @@ export default class GamesList extends Component {
 }
 
 GamesList.propTypes = {
-  games: PropTypes.array.isRequired,
-};
+  games: PropTypes.any,
+}.isRequired;
