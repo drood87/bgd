@@ -4,11 +4,16 @@ import PropTypes from 'prop-types';
 import './games-list.styles.scss';
 import Overdrive from 'react-overdrive';
 
+import Spinner from '../loading-spinner/loading-spinner.component';
+
 export default class GamesList extends Component {
   render() {
     const { games } = this.props;
-    console.log(games);
-    // (game.cover || {}).image_id in case cover is not there so undefined just cerate an empty object instead of throwing an error
+    const { isLoaded } = this.props;
+
+    // (game.cover || {}).image_id in case cover is not
+    // there so undefined just cerate an empty object
+    // instead of throwing an error
 
     return (
       <>
@@ -28,13 +33,18 @@ export default class GamesList extends Component {
               >
                 <div className="game-image-container">
                   <Overdrive id={game.id}>
-                    <img
-                      className="game-image"
-                      src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
-                        (game.cover || {}).image_id
-                      }.jpg`}
-                      alt={game.slug}
-                    />
+                    {isLoaded ? (
+                      <img
+                        className="game-image"
+                        src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
+                          (game.cover || {}).image_id
+                        }.jpg
+                      `}
+                        alt={game.slug}
+                      />
+                    ) : (
+                      <Spinner />
+                    )}
                   </Overdrive>
                 </div>
               </Link>
@@ -47,5 +57,5 @@ export default class GamesList extends Component {
 }
 
 GamesList.propTypes = {
-  games: PropTypes.array.isRequired,
-};
+  games: PropTypes.any,
+}.isRequired;

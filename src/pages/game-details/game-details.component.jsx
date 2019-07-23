@@ -1,10 +1,9 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import Overdrive from 'react-overdrive';
 
-import '../game-details/game-details.styles.scss';
+import './game-details.styles.scss';
 
 class GameDetails extends Component {
   state = {
@@ -31,7 +30,10 @@ class GameDetails extends Component {
   }
 
   render() {
-    const { name, screenshot, cover, id } = this.props.location.state;
+    const {
+      name, screenshot, cover, id,
+    } = this.props.location.state;
+
     const { summary, first_release_date } = this.state.gameDetails;
 
     return (
@@ -54,6 +56,7 @@ class GameDetails extends Component {
           <div className="game-details__cover">
             <Overdrive id={id}>
               <img
+                className="game-details__image"
                 src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
                   cover.image_id
                 }.jpg`}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import Header from '../../components/header/header.component';
+
 import SearchField from '../../components/search-field/search-field.component';
 import GamesList from '../../components/games-list/games-list.component';
 import './homepage.styles.scss';
@@ -8,7 +7,7 @@ import './homepage.styles.scss';
 class HomePage extends Component {
   state = {
     gamesData: [],
-    // searchField: '',
+    isLoaded: false,
   };
 
   async componentDidMount() {
@@ -22,29 +21,22 @@ class HomePage extends Component {
       // set gamesData data in state
       this.setState({
         gamesData: [...data[0].published],
+        isLoaded: true,
       });
     } catch (e) {
-      console.log(e);
+      throw e;
     }
   }
 
-  // handleChange = (e) => {
-  //   this.setState({
-  //     searchField: e.target.value,
-  //   });
-  // };
-
   render() {
     const { gamesData } = this.state;
+    const { isLoaded } = this.state;
     return (
       <div className="homepage">
         <div className="search">
-          <SearchField
-            placeholder="Search Game"
-            // handleChange={this.handleChange}
-          />
+          <SearchField placeholder="Search Game" />
         </div>
-        <GamesList games={gamesData} />
+        <GamesList games={gamesData} isLoaded={isLoaded} />
       </div>
     );
   }
