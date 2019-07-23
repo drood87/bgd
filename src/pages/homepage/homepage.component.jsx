@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import SearchField from '../../components/search-field/search-field.component';
 import GamesList from '../../components/games-list/games-list.component';
+
 import './homepage.styles.scss';
 
 class HomePage extends Component {
   state = {
     gamesData: [],
-    isLoaded: false,
   };
 
   async componentDidMount() {
@@ -21,7 +21,6 @@ class HomePage extends Component {
       // set gamesData data in state
       this.setState({
         gamesData: [...data[0].published],
-        isLoaded: true,
       });
     } catch (e) {
       throw e;
@@ -30,13 +29,13 @@ class HomePage extends Component {
 
   render() {
     const { gamesData } = this.state;
-    const { isLoaded } = this.state;
+
     return (
       <div className="homepage">
         <div className="search">
           <SearchField placeholder="Search Game" />
         </div>
-        <GamesList games={gamesData} isLoaded={isLoaded} />
+        <GamesList games={gamesData} />
       </div>
     );
   }

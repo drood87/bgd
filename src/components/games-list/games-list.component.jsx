@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import './games-list.styles.scss';
 import Overdrive from 'react-overdrive';
 
-import Spinner from '../loading-spinner/loading-spinner.component';
-
 export default class GamesList extends Component {
   render() {
     const { games } = this.props;
-    const { isLoaded } = this.props;
 
+    console.log(games);
     // (game.cover || {}).image_id in case cover is not
     // there so undefined just cerate an empty object
     // instead of throwing an error
@@ -33,7 +31,18 @@ export default class GamesList extends Component {
               >
                 <div className="game-image-container">
                   <Overdrive id={game.id}>
-                    {isLoaded ? (
+                    {game.cover === undefined ? (
+                      <div className="placeholder-container">
+                        <img
+                          src={`https://via.placeholder.com/200?text=${
+                            game.name
+                          }`}
+                          alt="placeholder"
+                          className="placeholder"
+                        />
+                        <p>{game.name}</p>
+                      </div>
+                    ) : (
                       <img
                         className="game-image"
                         src={`https://images.igdb.com/igdb/image/upload/t_cover_uniform/${
@@ -42,8 +51,6 @@ export default class GamesList extends Component {
                       `}
                         alt={game.slug}
                       />
-                    ) : (
-                      <Spinner />
                     )}
                   </Overdrive>
                 </div>

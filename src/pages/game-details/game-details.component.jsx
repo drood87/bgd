@@ -12,6 +12,7 @@ class GameDetails extends Component {
 
   async componentDidMount() {
     const { id } = this.props.location.state;
+
     const res = await fetch(
       'https://shrouded-shelf-16885.herokuapp.com/gameDetails',
       {
@@ -33,7 +34,7 @@ class GameDetails extends Component {
     const {
       name, screenshot, cover, id,
     } = this.props.location.state;
-
+    const { isLoaded } = this.state;
     const { summary, first_release_date } = this.state.gameDetails;
 
     return (
@@ -52,6 +53,7 @@ class GameDetails extends Component {
             marginTop: '5vh',
           }}
         />
+        )
         <div className="game-details__section">
           <div className="game-details__cover">
             <Overdrive id={id}>
