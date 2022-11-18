@@ -13,7 +13,7 @@
     "react-overdrive": "0.0.10",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "nodemon": "nodemon",
